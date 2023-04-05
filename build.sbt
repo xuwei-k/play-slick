@@ -18,9 +18,19 @@ Global / onLoad := (Global / onLoad).value.andThen { s =>
 lazy val commonSettings = Seq(
   // Work around https://issues.scala-lang.org/browse/SI-9311
   scalacOptions ~= (_.filterNot(_ == "-Xfatal-warnings")),
-  scalaVersion       := "2.13.10",               // scala213,
-  crossScalaVersions := Seq("2.13.10"),          // scala213,
-  pomExtra           := scala.xml.NodeSeq.Empty, // Can be removed when dropping interplay
+  scalacOptions ++= {
+    if (scalaBinaryVersion.value == "3") {
+      Seq("-source:3.0-migration")
+    } else {
+      Nil
+    }
+  },
+  scalaVersion        := "3.3.0-RC3",
+  crossScalaVersions  := Seq("2.13.10", "3.3.0-RC3"),
+  pomExtra            := scala.xml.NodeSeq.Empty, // Can be removed when dropping interplay
+  organization        := "com.github.xuwei-k",
+  sonatypeProfileName := organization.value,
+  version             := "6.0.0-M1-fork-1",
   developers += Developer(
     "playframework",
     "The Play Framework Contributors",
