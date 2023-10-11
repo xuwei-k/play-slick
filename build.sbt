@@ -23,7 +23,7 @@ lazy val commonSettings = Seq(
   pomExtra            := scala.xml.NodeSeq.Empty, // Can be removed when dropping interplay
   organization        := "com.github.xuwei-k",
   sonatypeProfileName := organization.value,
-  version             := "5.1.0-fork-1",
+  version             := "5.1.0-fork-2",
   developers += Developer(
     "playframework",
     "The Play Framework Team",
