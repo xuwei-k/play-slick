@@ -20,16 +20,17 @@ object Dependencies {
 object Version {
   val play = _root_.play.core.PlayVersion.current
 
-  val slick = "3.4.1"
+  val slick = "3.5.0"
   val h2    = "2.1.214"
 }
 
 object Library {
-  val playLogback        = "com.typesafe.play"  %% "play-logback"         % Version.play
-  val playJdbcApi        = "com.typesafe.play"  %% "play-jdbc-api"        % Version.play
-  val playJdbcEvolutions = "com.typesafe.play"  %% "play-jdbc-evolutions" % Version.play
-  val playSpecs2         = "com.typesafe.play"  %% "play-specs2"          % Version.play
-  val slick              = "com.typesafe.slick" %% "slick"                % Version.slick
-  val slickHikariCP      = "com.typesafe.slick" %% "slick-hikaricp"       % Version.slick
-  val h2                 = "com.h2database"      % "h2"                   % Version.h2
+  val playLogback = ("com.typesafe.play" %% "play-logback"  % Version.play).cross(CrossVersion.for3Use2_13)
+  val playJdbcApi = ("com.typesafe.play" %% "play-jdbc-api" % Version.play).cross(CrossVersion.for3Use2_13)
+  val playJdbcEvolutions =
+    ("com.typesafe.play" %% "play-jdbc-evolutions" % Version.play).cross(CrossVersion.for3Use2_13)
+  val playSpecs2    = ("com.typesafe.play" %% "play-specs2"    % Version.play).cross(CrossVersion.for3Use2_13)
+  val slick         = "com.typesafe.slick" %% "slick"          % Version.slick
+  val slickHikariCP = "com.typesafe.slick" %% "slick-hikaricp" % Version.slick
+  val h2            = "com.h2database"      % "h2"             % Version.h2
 }
